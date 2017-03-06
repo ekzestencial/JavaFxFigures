@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.javafxfigures.FXMLController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="793.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Open" />
+                        <MenuItem fx:id="fileSave" mnemonicParsing="false" onAction="#fileSave" text="Save" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <SplitPane dividerPositions="0.7737041719342604" styleClass="cx" stylesheets="@NetBeansProjects/opt/JavaFXSceneBuilder2.0/app/circle.css">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Canvas fx:id="mycanvas" height="586.0" mouseTransparent="true" opacity="0.5" width="610.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="163.0">
+                     <children>
+                        <Button layoutX="14.0" layoutY="105.0" mnemonicParsing="false" onAction="#ButtonPen" prefHeight="35.0" prefWidth="32.0" style="-fx-background-image: url(&quot;file:///home/ekzestencial/NetBeansProjects/Icons/brush.png&quot;); -fx-border-color: #F0F8FF;" wrapText="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                        <Button layoutX="108.0" layoutY="149.0" mnemonicParsing="false" onAction="#Eraser" prefHeight="35.0" prefWidth="32.0" style="-fx-background-image: url(&quot;file:///home/ekzestencial/NetBeansProjects/Icons/eraser-tool-for-school.png&quot;);" wrapText="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                        <Button layoutX="108.0" layoutY="105.0" mnemonicParsing="false" onAction="#ButtonRectangle" prefHeight="35.0" prefWidth="32.0" style="-fx-background-image: url(&quot;file:///home/ekzestencial/NetBeansProjects/Icons/33.png&quot;);" wrapText="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                        <Button layoutX="14.0" layoutY="149.0" mnemonicParsing="false" onAction="#ButtonArch" prefHeight="35.0" prefWidth="32.0" style="-fx-background-image: url(&quot;file:///home/ekzestencial/NetBeansProjects/Icons/gateway-arch-eeuu.png&quot;);" wrapText="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                        <ColorPicker fx:id="cp" layoutX="12.0" layoutY="231.0" prefHeight="25.0" prefWidth="129.0" />
+                        <Slider fx:id="slider" layoutX="6.0" layoutY="277.0" prefHeight="16.0" prefWidth="138.0" />
+                        <Label fx:id="lbl" ellipsisString="" layoutX="148.0" layoutY="278.0" prefHeight="15.0" prefWidth="23.0" text="0.5" />
+                        <Button layoutX="61.0" layoutY="105.0" mnemonicParsing="false" onAction="#ButtonLine" prefHeight="35.0" prefWidth="32.0" style="-fx-background-image: url(&quot;file:///home/ekzestencial/NetBeansProjects/Icons/substract.png&quot;);" wrapText="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                        <Button layoutX="61.0" layoutY="149.0" mnemonicParsing="false" onAction="#ButtonCircle" prefHeight="35.0" prefWidth="32.0" style="-fx-background-image: url(&quot;file:///home/ekzestencial/NetBeansProjects/Icons/34.png&quot;);" wrapText="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                        <Button layoutX="30.0" layoutY="310.0" mnemonicParsing="false" onAction="#ButtonFillAll" prefHeight="35.0" prefWidth="32.0" style="-fx-background-image: url(&quot;file:///home/ekzestencial/NetBeansProjects/Icons/32.png&quot;); -fx-border-color: #F0F8FF;" wrapText="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                        <Button layoutX="88.0" layoutY="310.0" mnemonicParsing="false" onAction="#ButtonFill" prefHeight="35.0" prefWidth="32.0" style="-fx-background-image: url(&quot;file:///home/ekzestencial/NetBeansProjects/Icons/3.png&quot;); -fx-border-color: #F0F8FF;" wrapText="true">
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>
