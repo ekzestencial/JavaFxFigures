@@ -59,15 +59,15 @@ public class FXMLController implements Initializable {
 	private static Stage stage;
 	private FXEngine ge;
 	Composite sheet;
-	//k1,k2 - coordinate first point where mouse was pressed
-	//k3,k4 - coordinate second point where mouse was released.
+	//k1,k2 - coordinate of the first point where mouse was pressed
+	//k3,k4 - coordinate of the second point where mouse was released.
 	private double k1, k2, k3, k4;
 	private Shape shape;
 	private double width;
 	public static Paint color;
 	//value of the number Pi
 	private final double pi = Math.PI;
-	//value of filter event
+	//values of the filters' event
 	private EventHandler filterPaint;
 	private EventHandler filter2Paint;
 	private EventHandler filter3Draw;
@@ -78,7 +78,7 @@ public class FXMLController implements Initializable {
 		scene = scn;
 		stage = stg;
 	}
-	//removal previous event
+	//removal of previous event
 
 	private void removeMouseEvent() {
 		if (filterPaint != null) {
@@ -97,12 +97,12 @@ public class FXMLController implements Initializable {
 			scene.removeEventFilter(MouseEvent.MOUSE_PRESSED, filter5Fill);
 		}
 	}
-//drawing specific figure
+//drawing of a specific figure
 
 	private void paint(Drawing pic) {
 		removeMouseEvent();
 		pic.draw();
-		//Activation event of painting on the click of the mouse
+		//Activation of the event painting with the click of the mouse
 //	Event filters allows us to handle an event during the event capturing phase.(canvas was captured by other layer)
 
 		filterPaint = new EventHandler<MouseEvent>() {
@@ -116,7 +116,7 @@ public class FXMLController implements Initializable {
 		filter2Paint = new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent mouseEvent) {
-				//registration the latest coordinates
+				//registration of the latest coordinates
 				ge.lineTo(mouseEvent.getSceneX(), mouseEvent.getSceneY());
 				ge.stroke();
 
@@ -142,13 +142,13 @@ public class FXMLController implements Initializable {
 			public void handle(MouseEvent mouseEvent) {
 				k3 = mouseEvent.getSceneX();
 				k4 = mouseEvent.getSceneY();
-				// invoke specific method for each figure
+				// invoking specific method for each figure
 				pic.draw();
 				//set width
 				shape.setLineWidth(width);
 				//set color for each figure.
 				shape.setColor(color);
-				//add new shape on sheet.
+				//adding a new shape on the sheet.
 				sheet.add(shape);
 				Graphics.getInstance().show(shape);
 
@@ -162,12 +162,12 @@ public class FXMLController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		gc = mycanvas.getGraphicsContext2D();
-		//the creation of new engine
+		//the creation of a new engine
 		ge = new FXEngine();
 		ge.setGC(gc);
 		Graphics.getInstance().addEngine(ge, "FXEngine");
 		sheet = new Composite();
-		//filling our canvas in white
+		//filling the canvas in white
 		ge.setFillColor(Color.WHITE);
 		ge.fillRect(0, 0, mycanvas.getWidth(), mycanvas.getHeight());
 
@@ -176,7 +176,7 @@ public class FXMLController implements Initializable {
 		slider.setMax(20);
 		slider.setShowTickLabels(true);
 		slider.setShowTickMarks(true);
-		//listener width of line
+		//The listener changes width of the line
 		slider.valueProperty().addListener((observable) -> {
 			width = slider.getValue();
 			String str = String.format("%.1f", width);
@@ -184,7 +184,7 @@ public class FXMLController implements Initializable {
 			ge.setLineWidth(width);
 		});
 		cp.setValue(Color.BLACK);
-		//listener change of color
+		//The listener changes the color
 		cp.setOnAction((event) -> {
 			color = cp.getValue();
 			ge.setColor(color);
@@ -277,7 +277,7 @@ public class FXMLController implements Initializable {
 				ge.lineTo(k1, k2);
 				//	System.out.println(k1 + " " + k2);
 				//Polygons.setPoint((int) k1, (int) k2);
-				//create anonymous class and override draw method for figures filling
+				//creating of anonymous class and overriding of drawing method to fill figures
 				Composite sheetfill = new Composite() {
 					@Override
 					public void draw(GraphicsEngine ge) {
@@ -289,7 +289,7 @@ public class FXMLController implements Initializable {
 							Iterator<Point> pi = s.getPoints().iterator();
 							while (pi.hasNext()) {
 								Point p1 = pi.next();
-								//transmition dots of the rectangle to function for determination membership. 
+								//transmition of the rectangle dots to function for membership detetmination. 
 								dots.add(new Polygons.Point((int) p1.getX(), (int) p1.getY()));
 								System.out.println(shapes.size() + " " + s.getClass() + " " + p1.getX() + " " + p1.getY());
 							}
@@ -297,10 +297,10 @@ public class FXMLController implements Initializable {
 								//extra point removing
 								dots.remove(4);
 								//
-								//copy dots of the arraylist to massiv
+								//copying of the arraylist dots to the massiv
 								Polygons.Point[] dots_final = dots.toArray(new Polygons.Point[dots.size()]);
 								polygon = new Polygons(dots_final);
-								//determination the designated membership points to a rectangle
+								//determination of the designated points relating to a rectangle
 
 								if (polygon.isBelong(p)) {
 									ge.setFillColor(cp.getValue());
@@ -310,13 +310,13 @@ public class FXMLController implements Initializable {
 								}
 							}
 							if (s instanceof Circle) {
-								//points for drawing circle
+								//points for drawing of circle
 								Polygons.Point[] dots_filling = dots.toArray(new Polygons.Point[dots.size()]);
-								//get radius.
+								//getting radius.
 								int Radius = dots.get(1).x;
 								//extra point removing
 								dots.remove(1);
-								//points for determination area of circle
+								//points for determination of circle area
 								dots.add(new Polygons.Point(dots.get(0).x + Radius, dots.get(0).y));
 								dots.add(new Polygons.Point(dots.get(0).x, dots.get(0).y + Radius));
 								dots.add(new Polygons.Point(dots.get(0).x + Radius, dots.get(0).y + Radius));
@@ -333,7 +333,7 @@ public class FXMLController implements Initializable {
 					}
 
 				};
-				//copy current sheet to new filling sheet.
+				//copying a current sheet to a new filling sheet.
 				sheetfill.copyshapes(sheet.getShapes());
 				Graphics.getInstance().show(sheetfill);
 			}

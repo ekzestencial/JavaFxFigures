@@ -16,7 +16,7 @@ public class MainApp extends Application {
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
-	//the transfer of the current stage and scene in our FXMLController.class.
+	//transfering of the current stage and scene to FXMLController.class.
 	FXMLController.transfer(scene,stage);
         
         stage.setTitle("FiguresFx");
