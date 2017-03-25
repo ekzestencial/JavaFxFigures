@@ -36,19 +36,19 @@ public class Composite extends Shape {
 	@Override
 	public void draw(GraphicsEngine ge) {
 //method newCachedThreadPool() creates threads if it needs and closes them
-			ExecutorService executor = Executors.newCachedThreadPool();
+				ExecutorService executor = Executors.newCachedThreadPool();
 //			ExecutorService executor = Executors.newFixedThreadPool(3);
 		for (Shape s : shapes) {
-			executor.submit(new Runnable() {
+	executor.submit(new Runnable() {
 				@Override
 				public void run() {
 					s.setColor(FXMLController.color);
-						s.show(ge);
+					s.show(ge);
 				}
 			}
 			);
 		}
-			executor.shutdown();
+		executor.shutdown();
 	}
 
 	public void add(Shape s) {
@@ -62,6 +62,9 @@ public class Composite extends Shape {
 	public void copyshapes(List<Shape> shapes) {
 		this.shapes = shapes;
 
+	}
+	public void ClearShapes(){
+	shapes.removeAll(shapes);
 	}
 
 }

@@ -34,7 +34,6 @@ import static java.lang.Math.sin;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import javafx.event.EventType;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javax.print.attribute.standard.SheetCollate;
@@ -127,6 +126,7 @@ public class FXMLController implements Initializable {
 	}
 
 	private void draw(Drawing pic) {
+		ge.setColor(cp.getValue());
 		removeMouseEvent();
 		filter3Draw = new EventHandler<MouseEvent>() {
 			@Override
@@ -198,7 +198,7 @@ public class FXMLController implements Initializable {
 	private void ButtonPen(ActionEvent event) {
 		paint(() -> {
 			ge.setColor(cp.getValue());
-			ge.setLineWidth(0.5);
+			//ge.setLineWidth(0.5);
 		});
 
 	}
@@ -217,6 +217,7 @@ public class FXMLController implements Initializable {
 	void Eraser(ActionEvent event) {
 		paint(() -> {
 			ge.setColor(Color.WHITE);
+			
 		});
 		//draw1(gc);
 
@@ -261,13 +262,13 @@ public class FXMLController implements Initializable {
 	void ButtonFill(ActionEvent event) {
 		ge.setFillColor(Color.WHITE);
 		ge.clearRect(0, 0, mycanvas.getWidth(), mycanvas.getHeight());
-		Graphics.getInstance().show(sheet);
+		//Graphics.getInstance().show(sheet);
+		sheet.ClearShapes();
 	}
 
 	@FXML
 	void ButtonFillAll(ActionEvent event) {
-		removeMouseEvent();
-		EventHandler<MouseEvent> filter5Fill = new EventHandler<MouseEvent>() {
+		filter5Fill = new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent mouseEvent) {
 				ge.beginPath();
@@ -291,7 +292,7 @@ public class FXMLController implements Initializable {
 								Point p1 = pi.next();
 								//transmition of the rectangle dots to function for membership detetmination. 
 								dots.add(new Polygons.Point((int) p1.getX(), (int) p1.getY()));
-								System.out.println(shapes.size() + " " + s.getClass() + " " + p1.getX() + " " + p1.getY());
+					//			System.out.println(shapes.size() + " " + s.getClass() + " " + p1.getX() + " " + p1.getY());
 							}
 							if (s instanceof Rectangle) {
 								//extra point removing
@@ -340,6 +341,7 @@ public class FXMLController implements Initializable {
 
 		};
 		scene.addEventFilter(MouseEvent.MOUSE_PRESSED, filter5Fill);
+
 	}
 
 }
