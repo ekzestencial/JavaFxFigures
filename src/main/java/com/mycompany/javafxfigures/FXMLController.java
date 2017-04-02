@@ -217,7 +217,7 @@ public class FXMLController implements Initializable {
 	void Eraser(ActionEvent event) {
 		paint(() -> {
 			ge.setColor(Color.WHITE);
-			
+
 		});
 		//draw1(gc);
 
@@ -260,10 +260,10 @@ public class FXMLController implements Initializable {
 
 	@FXML
 	void ButtonFill(ActionEvent event) {
-		ge.setFillColor(Color.WHITE);
-		ge.clearRect(0, 0, mycanvas.getWidth(), mycanvas.getHeight());
 		//Graphics.getInstance().show(sheet);
 		sheet.ClearShapes();
+		//Graphics.getInstance().show(sheet);
+		gc.clearRect(0, 0,mycanvas.getWidth(),mycanvas.getHeight());
 	}
 
 	@FXML
@@ -292,7 +292,7 @@ public class FXMLController implements Initializable {
 								Point p1 = pi.next();
 								//transmition of the rectangle dots to function for membership detetmination. 
 								dots.add(new Polygons.Point((int) p1.getX(), (int) p1.getY()));
-					//			System.out.println(shapes.size() + " " + s.getClass() + " " + p1.getX() + " " + p1.getY());
+								//			System.out.println(shapes.size() + " " + s.getClass() + " " + p1.getX() + " " + p1.getY());
 							}
 							if (s instanceof Rectangle) {
 								//extra point removing

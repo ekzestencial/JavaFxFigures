@@ -64,7 +64,7 @@ public class Composite extends Shape {
 
 	}
 	public void ClearShapes(){
-	shapes.removeAll(shapes);
+	shapes.clear();
 	}
 
 }
